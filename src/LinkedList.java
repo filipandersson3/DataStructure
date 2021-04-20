@@ -6,13 +6,13 @@
  * @author Magnus Silverdal
  */
 public class LinkedList {
-    Node first;
+    Node first = new Node(null,null);
+
 
     /**
      * Constructor to create an empty list.
      */
     public LinkedList() {
-        first = null;
     }
 
     /**
@@ -21,11 +21,15 @@ public class LinkedList {
      * @param newNode
      */
     public void addLast(Node newNode) {
-        Node last = null;
-        for (int i = 0; i == size(); i++) {
-            last = first.next;
+        Node last = new Node(null, null);
+        if (size() != 0) {
+            for (int i = 0; i == size(); i++) {
+                last = first.next;
+            }
+            last = newNode;
+        } else {
+            first = newNode;
         }
-        last.next = newNode;
     }
 
     /**
@@ -45,10 +49,14 @@ public class LinkedList {
      */
     public int size() {
         int size = 0;
-        Node last = null;
-        while (last.next != null) {
-
+        Node countLast = first;
+        if (countLast != null){
+            while (countLast.next != null) {
+                countLast = countLast.next;
+                size++;
+            }
         }
+
         return size;
     }
 
