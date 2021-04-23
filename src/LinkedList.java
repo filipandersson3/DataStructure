@@ -29,6 +29,7 @@ public class LinkedList {
             last = newNode;
         } else {
             first = newNode;
+            first.next = last;
         }
     }
 
@@ -55,6 +56,7 @@ public class LinkedList {
                 countLast = countLast.next;
                 size++;
             }
+
         }
 
         return size;
