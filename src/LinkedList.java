@@ -6,7 +6,7 @@
  * @author Magnus Silverdal
  */
 public class LinkedList {
-    Node first = new Node(null,null);
+    Node first = null;
 
 
     /**
@@ -23,10 +23,7 @@ public class LinkedList {
     public void addLast(Node newNode) {
         Node last = new Node(null, null);
         if (size() != 0) {
-            for (int i = 0; i == size(); i++) {
-                last = first.next;
-            }
-            last = newNode;
+            first.next = newNode;
         } else {
             first = newNode;
             first.next = last;
@@ -38,8 +35,11 @@ public class LinkedList {
      * (bad practice, should throw an Exception)
      * @return
      */
-    public Node removeFirst() {
-        return null;
+    public String removeFirst() {
+        Node current = first;
+        first = first.next;
+        first.next = null;
+        return current.data;
     }
 
     /**
@@ -52,6 +52,7 @@ public class LinkedList {
         int size = 0;
         Node countLast = first;
         if (countLast != null){
+            size++;
             while (countLast.next != null) {
                 countLast = countLast.next;
                 size++;
